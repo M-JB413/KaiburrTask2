@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaiburr-app
+spec:
+  selector:
+      matchLabels:
+        app: kaiburr-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kaiburr-app
+    spec:
+      containers:
+        - name: kaiburr-app
+          image: jietthesh/kaiburr-app:latest
+          ports:
+          - containerPort: 8080
+          env:
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongo-root-username
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongo-root-password
+            - name: MONGO_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-config 
+                  key: database
+            - name: MONGO_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-config 
+                  key: host
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: kaiburr-service
+spec:
+  selector:
+    app: kaiburr-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    nodePort: 31000
+  type: NodePort

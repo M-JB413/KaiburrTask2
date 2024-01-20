@@ -1,0 +1,34 @@
+# Task2
+TasksLocal/HELP.md
+TasksLocal/target/
+TasksLocal/!.mvn/wrapper/maven-wrapper.jar
+TasksLocal/!**/src/main/**/target/
+TasksLocal/!**/src/test/**/target/
+
+### STS ###
+TasksLocal/.apt_generated
+TasksLocal/.classpath
+TasksLocal/.factorypath
+TasksLocal/.project
+TasksLocal/.settings
+TasksLocal/.springBeans
+TasksLocal/.sts4-cache
+
+### IntelliJ IDEA ###
+TasksLocal/.idea
+TasksLocal/*.iws
+TasksLocal/*.iml
+TasksLocal/*.ipr
+
+### NetBeans ###
+TasksLocal/nbproject/private/
+TasksLocal/nbbuild/
+TasksLocal/dist/
+TasksLocal/nbdist/
+TasksLocal/.nb-gradle/
+TasksLocal/build/
+TasksLocal/!**/src/main/**/build/
+TasksLocal/!**/src/test/**/build/
+
+### VS Code ###
+TasksLocal/.vscode/
